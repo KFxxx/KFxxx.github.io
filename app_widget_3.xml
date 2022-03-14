@@ -1,59 +1,55 @@
-<!-- 小部件主體宣告 -->
+<?xml version="1.0" encoding="utf-8" ?>
 <GridLayout 
-	xmlns:android="http://schemas.android.com/apk/res/android"
-	xmlns:tools="http://schemas.android.com/tools"
-	android:id="@+id/KFx.WX.WT1"
-	android:orientation="horizontal"
+	xmlns:android="http://schemas.android.com/apk/res/android" 
+	android:id="@id/AppWidget"
 	android:layout_gravity="center"
-	android:layout_width="wrap_content"
-	android:layout_height="wrap_content"
-	android:rowCount="10"
-	android:columnCount="6">
+	android:columnCount="6"
+	android:layout_width="fill_parent"
+	android:layout_height="fill_parent">
 	<!-- 大數字時鐘開始 -->
 	<TextClock 
-		android:id="@id/dayTextClock"
-		android:layout_rowWeight="10"
-		android:layout_columnWeight="3"
-		android:format12Hour="hh：mm" 
-		android:format24Hour="HH:mm"
-		android:textSize="100.0sp" 
-		android:textColor="#bb555555"
-		android:shadowColor="#22000000"
-		android:shadowRadius="3.0"
+    	android:id="@id/Clock"
+    	android:layout_columnSpan="6"
+    	android:layout_gravity="center"
+    	android:format12Hour="hh:mm" 
+    	android:format24Hour="HH:mm" 
+    	android:textSize="100.0sp" 
+    	android:textColor="#bb555555" 
+    	android:shadowColor="#22000000"
+    	android:shadowRadius="3.0" 
 		android:lines="1"/>
 	<!-- 大數字時鐘結束 -->
 	<!-- 天氣圖示開始 -->
 	<ImageView 
 		android:id="@id/Status_Image"
-		android:contentDescription="@string/status"
-		android:layout_rowWeight="5"
-		android:layout_columnWeight="2"
-		android:layout_width="250.0dip" 
-		android:layout_height="250.0dip" 
-		android:layout_marginTop="-50.0dip" 
-		android:shadowColor="#22000000" 
+		android:contentDescription="@string/status" 
+		android:layout_columnSpan="3"
+		android:layout_marginTop="-50.0dip"
+		android:layout_gravity="left"
+		android:minWidth="250.0dip"
+		android:minHeight="250.0dip"
+		android:shadowColor="#22000000"
 		android:shadowRadius="3.0"
 		android:tint="#ffdddddd"/>
 	<!-- 天氣圖示結束 -->
 	<!-- 溫度開始 -->
-	<TextView 
+	<TextView
 		android:id="@id/actualTemp"
-		android:layout_rowWeight="5"
-		android:layout_columnWeight="2"
-		android:layout_marginStart="5.0dip"
-		android:layout_marginLeft="5.0dip" 
+		android:layout_marginTop="30.0dip"
 		android:textSize="55.0sp"
-		android:textStyle="bold"
-		android:textColor="#ccaaaaaa"
-		ndroid:shadowColor="#80000000" 
-		android:shadowRadius="3.0" 
+		android:textColor="#ccaaaaaa" 
+		android:shadowColor="#80000000" 
+		android:shadowRadius="3.0"
 		android:lines="1"/>
-	<!-- 溫度結束 -->
+	<!-- 溫度結束 -->  
 	<!-- 描述開始 -->
 	<TextView 
 		android:id="@id/Status_Text"
-		android:layout_width="70.0dip"
-		android:layout_height="wrap_content"
+    	android:layout_columnSpan="6" 
+		android:layout_marginTop="-100.0dip"
+    	android:layout_gravity="right"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content"  
 		android:textSize="20.0sp"
 		android:textColor="#bb666666"
 		android:shadowColor="#88000000" 
@@ -61,208 +57,234 @@
 		android:lines="1"/>
 	<!-- 描述結束 -->
 	<!-- 日期區開始 -->
-	<TextClock 
+	<TextClock
 		android:id="@id/dayTextClock"
-		android:layout_width="wrap_content"
-		android:layout_height="wrap_content"
+    	android:layout_columnSpan="6"
+    	android:layout_gravity="right"
 		android:format12Hour="EEEE MMMM dd日 ‖ yyyy" 
 		android:format24Hour="EEEE MMMM dd日 ‖ yyyy"
+    	android:layout_width="wrap_content"
+    	android:layout_height="wrap_content" 
 		android:textSize="12.0sp"
-		android:textColor="#ff888888"
-		android:shadowColor="#77000000"
+		android:textColor="#ff888888" 
+		android:shadowColor="#77000000" 
 		android:shadowRadius="3.0" 
-		android:lines="1" />
+		android:lines="1"/>
 	<!-- 日期區結束 -->
 	<!-- 下半部細節開始 -->
-	<LinearLayout 
+	<LinearLayout
+		android:id="@id/WindRain" 
+		android:layout_columnSpan="6"
 		android:orientation="horizontal" 
 		android:layout_width="wrap_content" 
-		android:layout_height="wrap_content">
-		<!-- 左側開始 -->
-		<LinearLayout 
-			android:orientation="vertical"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content" 
-			android:layout_marginEnd="5.0dip">
-			<!-- 左上開始 -->
-			<LinearLayout 
-				android:background="@drawable/bg_round_widget"
-				android:layout_width="fill_parent"
+		android:layout_height="wrap_content" 
+    	android:layout_gravity="center">
+  		<!-- 左側開始 -->
+  		<LinearLayout 
+    		android:orientation="vertical" 
+    		android:layout_width="wrap_content" 
+    		android:layout_height="wrap_content" 
+    		android:layout_rowSpan="3" 
+    		android:layout_marginEnd="5.0dip">
+    		<!-- 左上開始 -->
+    		<LinearLayout 
+				android:background="@drawable/bg_round_widget" 
+				android:padding="5.0dip" 
+				android:layout_width="fill_parent" 
 				android:layout_height="wrap_content" 
-				android:padding="5.0dip"
-				android:alpha="0.55">
+				android:alpha="0.55" 
+				android:layout_rowSpan="3">
 				<!-- 風況圖示 -->
 				<ImageView 
-					android:src="@drawable/wind"
-					android:contentDescription="@string/wind"
-					android:layout_width="20.0dip"
-					android:layout_height="20.0dip"
-					android:tint="#ee111111"/>
+					android:layout_width="20.0dip" 
+					android:layout_height="20.0dip" 
+					android:src="@drawable/wind" 
+					android:tint="#ee111111" 
+					android:contentDescription="@string/wind"/>
 				<!-- 風況圖示結束 -->
 				<!-- 風況文字區 -->
-				<TextView 
+				<TextView  
 					android:id="@id/Wind"
-					android:layout_marginLeft="5.0dip" 
-					android:layout_marginStart="5.0dip"
 					android:layout_width="wrap_content" 
-					android:layout_height="wrap_content" 
+					android:layout_height="wrap_content"
+					android:layout_marginLeft="5.0dip"
+					android:layout_marginStart="5.0dip"
 					android:textSize="13.0sp" 
 					android:textColor="#ff666666"
-					android:shadowColor="#80000000"
-					android:shadowRadius="3.0" 
+					android:shadowColor="#80000000" 
+					android:shadowRadius="3.0"
 					android:lines="1"/>
 				<!-- 風況文字區結束 -->
 			</LinearLayout>
 			<!-- 左上結束 -->
-			<!-- 左下開始 -->
+ 			<!-- 左下開始 -->
 			<LinearLayout 
-				android:background="@drawable/bg_round_widget"
-				android:orientation="horizontal"
-				android:layout_width="fill_parent" 
-				android:layout_height="wrap_content"
-				android:minWidth="165.0dip" 
-				android:padding="5.0dip"
-				android:alpha="0.55">
-				<!-- 氣壓圖示開始 -->				
-				<ImageView 
-					android:src="@drawable/pressure"
-					android:contentDescription="@string/pressure"
-					android:layout_width="15.0dip" 
-					android:layout_height="15.0dip"
-					android:tint="#ee111111"/>
-				<!-- 氣壓圖示結束 -->		
-				<!-- 氣壓文字區開始 -->
-				<TextView 
-					android:id="@id/Pressure"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:layout_marginStart="5.0dip"
-					android:layout_marginEnd="5.0dip"
-					android:textColor="#ff666666" 
-					android:shadowColor="#80000000" 
-					android:shadowRadius="3.0" 
-					android:textSize="13.0sp"
-					android:lines="1"/>
-				<!-- 氣壓文字區結束 -->
-				<!-- 濕度圖示開始 -->	
-				<ImageView
-					android:src="@drawable/humidity"
-					android:contentDescription="@string/humidity"
-					android:layout_width="15.0dip" 
-					android:layout_height="15.0dip"  
-					android:tint="#ee111111" />
-				<!-- 濕度圖示結束 -->	
-				<!-- 濕度文字區開始 -->
-				<TextView
-					android:id="@id/Humidity"
-					android:layout_marginStart="5.0dip" 
-					android:layout_marginEnd="5.0dip"
-					android:layout_width="wrap_content"
-					android:layout_height="wrap_content"
-					android:textSize="13.0sp" 
-					android:textColor="#ff666666"
-					android:lines="1"
-					android:shadowColor="#80000000"
-					android:shadowRadius="3.0"/>
-				<!-- 濕度文字區結束 -->
-			</LinearLayout>
-			<!-- 左下結束 -->
-		</LinearLayout>
-		<!-- 左側結束 -->	
-		<!-- 右側開始 -->	
-		<LinearLayout 
-			android:orientation="vertical"
-			android:layout_width="wrap_content"
-			android:layout_height="wrap_content"
-			android:layout_marginLeft="5.0dip"
-			android:layout_marginStart="5.0dip">
-			<!-- 右上開始 -->
-			<LinearLayout android:orientation="horizontal" 
+				android:orientation="horizontal" 
 				android:background="@drawable/bg_round_widget" 
 				android:padding="5.0dip" 
-				android:layout_width="fill_parent"
-				android:layout_height="wrap_content"
-				android:minWidth="165.0dip"
-				android:alpha="0.55">
+				android:layout_marginTop="5.0dip" 
+				android:layout_width="fill_parent" 
+				android:layout_height="wrap_content" 
+				android:minWidth="165.0dip" 
+				android:alpha="0.55" 
+				android:layout_rowSpan="3">
+				<!-- 氣壓圖示開始 --> 
+				<ImageView 
+					android:layout_width="15.0dip" 
+					android:layout_height="15.0dip" 
+					android:src="@drawable/pressure" 
+					android:tint="#ee111111" 
+					android:contentDescription="@string/pressure"/>
+				<!-- 氣壓圖示結束 --> 
+				<!-- 氣壓文字區開始 -->
+				<TextView
+        			android:id="@id/Pressure"
+        			android:layout_width="wrap_content" 
+        			android:layout_height="wrap_content"
+        			android:layout_marginStart="5.0dip" 
+        			android:layout_marginEnd="5.0dip"
+					android:textSize="13.0sp" 
+					android:textColor="#ff666666"  
+        			android:shadowColor="#80000000" 
+        			android:shadowRadius="3.0"
+        			android:lines="1"/>
+      			<!-- 氣壓文字區結束 -->
+				<!-- 濕度圖示開始 --> 
+				<ImageView 
+					android:layout_width="15.0dip" 
+					android:layout_height="15.0dip" 
+					android:src="@drawable/humidity" 
+					android:tint="#ee111111" 
+					android:contentDescription="@string/humidity"/>
+				<!-- 濕度圖示結束 --> 
+				<!-- 濕度文字區開始 -->
+				<TextView  
+					android:id="@id/Humidity"
+					android:layout_width="wrap_content" 
+					android:layout_height="wrap_content" 
+					android:layout_marginStart="5.0dip" 
+					android:layout_marginEnd="5.0dip"
+					android:textSize="13.0sp" 
+					android:textColor="#ff666666" 
+					android:shadowColor="#80000000" 
+					android:shadowRadius="3.0"
+					android:lines="1"/>
+				<!-- 濕度文字區結束 -->
+			</LinearLayout>
+    		<!-- 左下結束 -->
+		</LinearLayout>
+		<!-- 左側結束 --> 
+		<!-- 右側開始 -->
+		<LinearLayout 
+			android:orientation="vertical" 
+			android:layout_width="wrap_content" 
+			android:layout_height="wrap_content" 
+			android:layout_marginLeft="5.0dip" 
+			android:layout_marginStart="5.0dip"
+			android:layout_rowSpan="3">
+			<!-- 右上開始 -->
+			<LinearLayout 
+				android:orientation="horizontal" 
+				android:background="@drawable/bg_round_widget" 
+				android:padding="5.0dip" 
+				android:layout_width="fill_parent" 
+				android:layout_height="wrap_content" 
+				android:minWidth="165.0dip" 
+				android:alpha="0.55" 
+				android:layout_rowSpan="3">
 				<!-- 日出圖示開始 -->
 				<ImageView 
 					android:src="@drawable/sunrise"
 					android:contentDescription="@string/sunrise"
-					android:layout_width="20.0dip"
-					android:layout_height="20.0dip"
-					android:tint="#ee111111"  />
+					android:layout_width="20.0dip" 
+        			android:layout_height="20.0dip" 
+					android:tint="#ee111111"/>
 				<!-- 日出圖示結束 -->
 				<!-- 日出文字開始 -->
-				<TextView 
+				<TextView
 					android:id="@id/Sunrise"
 					android:layout_width="wrap_content"
 					android:layout_height="wrap_content"
-					android:layout_marginStart="5.0dip" 
-					android:layout_marginEnd="5.0dip"
-					android:textSize="13.0sp" 
-					android:textColor="#ff666666"
-					android:shadowColor="#80000000" 
-					android:shadowRadius="3.0" 
-					android:lines="1"/>
-				<!-- 日出文字結束 -->
-				<!-- 日落圖示開始 -->
-				<ImageView 
-					android:src="@drawable/sunset" 
-					android:contentDescription="@string/sunset"
-					android:layout_width="20.0dip" 
-					android:layout_height="20.0dip" 
-					android:tint="#ee111111"  />
-				<!-- 日落文字結束 -->
-				<!-- 日落文字開始 -->
-				<TextView android:textSize="13.0sp" android:textColor="#ff666666" android:id="@id/Sunset" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lines="1" android:shadowColor="#80000000" android:shadowRadius="3.0" android:layout_marginStart="5.0dip" />
-				<!-- 日落文字結束 -->
-			</LinearLayout>
-			<!-- 右上結束 -->
-			<!-- 右下開始 -->
-			<LinearLayout 
-				android:background="@drawable/bg_round_widget" 
-				android:orientation="horizontal"
-				android:layout_width="fill_parent" 
-				android:layout_height="wrap_content" 
-				android:minWidth="165.0dip"  
-				android:layout_marginTop="5.0dip" 
-				android:padding="5.0dip" 
-				android:alpha="0.55">
-				<!-- 下雪圖示開始 -->
-				<ImageView 
-					android:id="@id/Snow"
-					android:src="@drawable/snow"
-					android:contentDescription="@string/snow"
-					android:visibility="gone" 
-					android:layout_width="20.0dip" 
-					android:layout_height="20.0dip"
-					android:tint="#ee111111"/>
-				<!-- 下雪圖示結束 -->
-				<!-- 降雨圖示開始 -->
-				<ImageView 
-					android:id="@id/Rain" 
-					android:contentDescription="@string/rain"
-					android:layout_width="18.0dip" 
-					android:layout_height="18.0dip"
-					android:tint="#ee111111"/>
-				<!-- 降雨圖示結束 -->
-				<!-- 降雨文字區開始 -->
-				<TextView  
-					android:id="@id/RainSnow"
-					android:layout_width="wrap_content" 
-					android:layout_height="wrap_content"
 					android:layout_marginStart="5.0dip"
-					android:layout_marginLeft="5.0dip"
-					android:textSize="13.0sp" 
+					android:layout_marginEnd="5.0dip"
+					android:textSize="13.0sp"
 					android:textColor="#ff666666"
 					android:shadowColor="#80000000"
 					android:shadowRadius="3.0"
 					android:lines="1"/>
-				<!-- 降雨文字區結束 -->
-			</LinearLayout>
-			<!-- 右下結束 -->
+				<!-- 日出文字結束 -->
+				<!-- 日落圖示開始 -->
+				<ImageView
+					android:layout_width="20.0dip"
+					android:layout_height="20.0dip"
+					android:src="@drawable/sunset"
+					android:tint="#ee111111"
+					android:contentDescription="@string/sunset"/>
+				<!-- 日落圖示結束 -->
+				<!-- 日落文字開始 -->
+				<TextView
+					android:id="@id/Sunset"
+					android:layout_width="wrap_content"
+					android:layout_height="wrap_content"
+					android:layout_marginStart="5.0dip"
+					android:textSize="13.0sp"
+					android:textColor="#ff666666"
+					android:shadowColor="#80000000"
+					android:shadowRadius="3.0"
+					android:lines="1" />
+				<!-- 日落文字結束 -->
+    		</LinearLayout>
+    		<!-- 右上結束 -->
+    		<!-- 右下開始 -->
+			<LinearLayout
+				android:orientation="horizontal"
+				android:background="@drawable/bg_round_widget"
+				android:padding="5.0dip"
+				android:layout_width="fill_parent"
+				android:layout_height="wrap_content"
+				android:layout_marginTop="5.0dip"
+				android:minWidth="165.0dip"
+				android:alpha="0.55"
+				android:layout_rowSpan="3">
+ 				<!-- 下雪圖示開始 -->
+				<ImageView
+					android:id="@id/Snow"
+					android:visibility="gone"
+					android:layout_width="20.0dip"
+					android:layout_height="20.0dip"
+					android:src="@drawable/snow"
+					android:tint="#ee111111"
+					android:contentDescription="@string/snow"/>
+				<!-- 下雪圖示結束 -->
+				<!-- 降雨圖示開始 -->
+				<ImageView
+					android:id="@id/Rain"
+					android:src="@drawable/rain" 
+					android:contentDescription="@string/rain"
+					android:textColor="#ff666666"
+					android:layout_width="18.0dip"
+					android:layout_height="18.0dip"
+					android:shadowRadius="3.0"
+        			android:tint="#ee111111"
+        			android:layout_marginStart="5.0dip"/>
+				<!-- 降雨圖示結束 -->
+      			<!-- 降雨文字區開始 -->
+      			<TextView
+        			android:id="@id/RainSnow"
+        			android:layout_width="wrap_content"
+        			android:layout_height="wrap_content"
+        			android:layout_marginStart="5.0dip"
+        			android:layout_marginLeft="5.0dip"
+        			android:textSize="13.0sp"
+        			android:textColor="#ff666666"
+        			android:shadowColor="#80000000"
+        			android:shadowRadius="3.0"
+        			android:lines="1"/>
+      			<!-- 降雨文字區結束 -->
+    		</LinearLayout>
+    		<!-- 右下結束 -->
 		</LinearLayout>
-	<!-- 右側結束 -->
+		<!-- 右側結束 -->
+	</LinearLayout>
+	<!-- 下半部細節結束 -->
 </GridLayout>
-<!-- 小部件主體結束 -->
-    
